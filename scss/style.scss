@@ -1,0 +1,685 @@
+@use './colors' as *;
+@use './animations' as *;
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 1250px;
+	max-width: 100%;
+}
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+body {
+	font-size: 1.6rem;
+	font-family: 'Roboto', sans-serif;
+}
+
+.header {
+	position: relative;
+	overflow: hidden;
+	&__bg {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		background-image: url('../img/header1.jpg');
+		background-position: center;
+		background-size: cover;
+	}
+	.nav-mobile {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		background-color: $black;
+		transform: translateX(100%);
+		transition: transform 0.3s;
+		z-index: 110;
+
+		&--active {
+			transform: translateX(10%);
+		}
+		&__links {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			flex-direction: column;
+		}
+		&__link {
+			margin: 3rem 5rem;
+			color: $white;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-size: 1.6rem;
+		}
+		hr {
+			width: 90%;
+			opacity: 0.2;
+		}
+	}
+	&__logo {
+		position: absolute;
+		top: 5%;
+		left: 50%;
+		width: 15rem;
+		transform: translate(-50%, -50%);
+		z-index: 111;
+	}
+	.hamburger {
+		position: absolute;
+		margin-top: 2px;
+		top: 5%;
+		right: 0;
+		transform: translate(-50%, -50%);
+		z-index: 1000;
+		&-inner,
+		&-inner::before,
+		&-inner::after {
+			background-color: $white;
+			z-index: 1000;
+		}
+	}
+	&__text {
+		position: absolute;
+		color: $white;
+		text-transform: uppercase;
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		transform: translate(-50%, -50%);
+	}
+	&__heading {
+		font-size: 5rem;
+		margin-bottom: 10px;
+	}
+	&__p {
+		font-size: 1.5rem;
+		font-weight: 300;
+	}
+	&__icon {
+		position: absolute;
+		top: 90%;
+		left: 50%;
+		width: 5rem;
+		transform: translate(-50%, -50%);
+		animation: iconDown 3s infinite;
+	}
+}
+.nav-desktop {
+	display: none;
+}
+
+//main
+
+.main {
+	.model-mobile {
+		padding: 4rem 0rem 0rem;
+		background-color: $black;
+		color: $white;
+		overflow: hidden;
+		&__img {
+			background-image: url('../img/starship_makieta_phone.jpg');
+			background-position: center;
+			background-size: cover;
+			height: 70vh;
+			transform: scale(1.2);
+		}
+		&__text {
+			margin: 2rem;
+		}
+		&__heading {
+			margin-top: 10rem;
+			font-size: 3.5rem;
+			text-transform: uppercase;
+		}
+		&__p {
+			margin-top: 2rem;
+			font-size: 1.6rem;
+			font-weight: 300;
+			width: 100%;
+		}
+		&__box {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			margin: 0.5rem 0;
+			padding: 2rem;
+			width: 100%;
+			color: $white;
+			border-bottom: 1px solid $gray;
+			font-size: 1.4rem;
+
+			&-heading {
+				grid-column: 1/8;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+			&-parameters {
+				grid-column: 9/-1;
+				font-weight: bold;
+				text-align: end;
+			}
+			&-parameters--gray {
+				color: $gray;
+			}
+		}
+	}
+	.model-desktop {
+		display: none;
+	}
+
+	.video {
+		width: 100%;
+		height: 100vh;
+	}
+	.video-bg {
+		position: relative;
+		background-image: url('../img/header2.jpg');
+		width: 100%;
+		height: 100vh;
+		background-position: center;
+		background-size: cover;
+		cursor: pointer;
+	}
+	.video-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+		width: 65px;
+		transition: width 0.3s;
+		&:hover {
+			width: 60px;
+		}
+	}
+	.informations {
+		display: none;
+	}
+
+	.information-phone-first {
+		background-color: $black;
+		color: $white;
+		&__img {
+			width: 100%;
+			height: 60vh;
+		}
+		&__heading {
+			padding: 3rem 2rem 0rem;
+			text-transform: uppercase;
+			font-size: 3.5rem;
+		}
+		&__p {
+			padding: 1rem 2rem 0rem;
+			line-height: 2.5rem;
+			font-weight: 300;
+		}
+		&__btn {
+			margin: 3rem 2rem;
+			padding: 1.5rem 3.5rem;
+			text-transform: uppercase;
+			background: none;
+			border: 1px solid $white;
+			color: $white;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background-color 0.3s, color 0.3s;
+			&:hover {
+				background-color: $white;
+				color: $black;
+			}
+		}
+	}
+	.starbase {
+		position: relative;
+		background-image: url('../img/starbase2.jpg');
+		width: 100%;
+		height: 100vh;
+		background-position: center;
+		background-size: cover;
+		&__heading {
+			padding: 0 2rem;
+			position: absolute;
+			top: 60%;
+			text-transform: uppercase;
+			font-size: 3.5rem;
+			color: $white;
+		}
+		&__p {
+			padding: 0 2rem;
+			position: absolute;
+			top: 68%;
+			width: 100%;
+			line-height: 2.5rem;
+			font-weight: 300;
+			color: $white;
+		}
+		&__btn {
+			margin: 0 2rem;
+			padding: 1.4rem 3.5rem;
+			position: absolute;
+			top: 88%;
+			text-transform: uppercase;
+			background: none;
+			border: 1px solid $white;
+			color: $white;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background-color 0.3s, color 0.3s;
+			&:hover {
+				background-color: $white;
+				color: $black;
+			}
+		}
+	}
+}
+//FOOTER
+.footer-first {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: $black;
+	width: 100%;
+	height: 62vh;
+	&__btn {
+		padding: 2rem 2.8rem;
+		text-transform: uppercase;
+		background: none;
+
+		border: 1px solid $white;
+		color: $white;
+		font-weight: bold;
+		cursor: pointer;
+		transition: background-color 0.3s, color 0.3s;
+		&:hover {
+			background-color: $white;
+			color: $black;
+		}
+	}
+	&__line {
+		margin: 2rem 0rem;
+		width: 1px;
+		height: 15rem;
+		background-color: $white;
+	}
+	&__p {
+		padding: 2rem;
+		color: $gray;
+		font-size: 1.3rem;
+		text-align: center;
+		line-height: 2rem;
+	}
+	a {
+		text-decoration: none;
+	}
+	&__span {
+		color: $white;
+		transition: color 0.3s;
+		&:hover {
+			color: $gray;
+		}
+	}
+}
+.footer-second {
+	padding: 3rem;
+	width: 100%;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: bold;
+	background-color: $black;
+	p {
+		padding: 3rem;
+		width: 100%;
+		display: inline-block;
+		color: $gray;
+	}
+	a {
+		margin: 1rem;
+		width: 100%;
+		align-items: center;
+		line-height: 2rem;
+		text-decoration: none;
+		color: $white;
+		transition: color 0.3s;
+	}
+	a:hover {
+		color: $gray;
+	}
+}
+@media (min-width: 523px) {
+	.main {
+		.starbase {
+			&__btn {
+				top: 85%;
+			}
+		}
+	}
+}
+@media (min-width: 603px) {
+	.main {
+		.starbase {
+			&__btn {
+				top: 80%;
+			}
+		}
+	}
+}
+@media (min-width: 850px) {
+	.main {
+		.information-phone-first {
+			&__img {
+				height: 70vh;
+			}
+		}
+	}
+}
+@media (min-width: 830px) {
+	.main {
+		.model-mobile {
+			&__img {
+				margin: 0 auto;
+				background-image: url('../img/starship_makieta_phone.jpg');
+				background-position: center;
+				background-size: cover;
+				height: 70vh;
+				transform: scale(1.2);
+				width: 70%;
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.header {
+		.nav-mobile {
+			display: none;
+		}
+		.nav-desktop {
+			display: block;
+		}
+		position: relative;
+		&__bg {
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			background-image: url('../img/header1.jpg');
+			background-position: center;
+			background-size: cover;
+		}
+		.hamburger {
+			display: none;
+		}
+		&__logo {
+			display: none;
+		}
+		.nav-desktop {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 6rem;
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			z-index: 1;
+
+			&__logo {
+				position: absolute;
+				grid-column: 3 / 4;
+				width: 24rem;
+				bottom: 0;
+			}
+			&__links {
+				position: absolute;
+				bottom: 0;
+				grid-column: 8 / 12;
+			}
+			&__link {
+				position: relative;
+				margin: 0 2rem;
+				color: $white;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 1.4rem;
+				font-weight: bold;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: -2px;
+					left: 0;
+					height: 1.2px;
+					width: 100%;
+					background-color: $white;
+					transform: scaleX(0);
+					transform-origin: right;
+					transition: transform 0.3s;
+				}
+				&:hover::after {
+					transform: scaleX(1);
+					transform-origin: left;
+				}
+			}
+			.hamburger {
+				position: absolute;
+				top: 3em;
+				left: 1em;
+				transform: translateY(-50%);
+				z-index: 100;
+				&-inner,
+				&-inner::before,
+				&-inner::after {
+					background-color: $white;
+					z-index: 100;
+				}
+			}
+		}
+		&__text {
+			position: absolute;
+			color: $white;
+			text-transform: uppercase;
+			top: 42%;
+			left: 50%;
+			text-align: center;
+			transform: translate(-50%, -50%);
+		}
+		&__heading {
+			font-size: 10rem;
+			margin-bottom: 10px;
+		}
+		&__p {
+			font-size: 1.5rem;
+		}
+		&__icon {
+			position: absolute;
+			top: 90%;
+			left: 50%;
+			width: 5rem;
+			transform: translate(-50%, -50%);
+			animation: iconDown 3s infinite;
+		}
+	}
+	.nav-desktop {
+		display: none;
+	}
+	.main {
+		.model {
+			display: block;
+			width: 100%;
+			height: 111vh;
+			background-image: url('../img/starship_makieta.jpg');
+			background-position: center;
+			background-size: cover;
+			&__text {
+				padding: 2rem;
+				color: $white;
+			}
+			&__heading {
+				padding-top: 5rem;
+				font-size: 4.8rem;
+				text-transform: uppercase;
+			}
+			&__p {
+				padding-top: 2rem;
+				margin-bottom: 2rem;
+				font-size: 1.6rem;
+				font-weight: 300;
+				width: 40%;
+				line-height: 2.5rem;
+			}
+			&__box {
+				display: grid;
+				grid-template-columns: repeat(12, 1fr);
+				margin: 0.5rem 0;
+				padding: 2rem;
+				width: 45%;
+				color: $white;
+				border-bottom: 1px solid $gray;
+				font-size: 1.4rem;
+				&-heading {
+					grid-column: 1/8;
+					font-weight: bold;
+					text-transform: uppercase;
+				}
+				&-parameters {
+					grid-column: 9/-1;
+					font-weight: bold;
+					text-align: end;
+				}
+				&-parameters--gray {
+					color: $gray;
+				}
+			}
+		}
+		.model-mobile {
+			display: none;
+		}
+		.informations {
+			display: block;
+			.information-first {
+				padding: 0 2rem;
+				position: relative;
+				background-image: url('../img/2.png');
+				background-position: center;
+				background-size: cover;
+				width: 100%;
+				height: 100vh;
+				color: $white;
+				&__heading {
+					position: absolute;
+					top: 20%;
+					text-transform: uppercase;
+					font-size: 4.5rem;
+				}
+				&__p {
+					position: absolute;
+					top: 30%;
+					width: 40%;
+					line-height: 2.5rem;
+					font-weight: 300;
+				}
+				&__btn {
+					margin-top: 2rem;
+					padding: 1.8rem 4rem;
+					position: absolute;
+					top: 50%;
+					text-transform: uppercase;
+					background: none;
+					border: 1px solid $white;
+					color: $white;
+					font-weight: bold;
+					cursor: pointer;
+					transition: background-color 0.3s, color 0.3s;
+					&:hover {
+						background-color: $white;
+						color: $black;
+					}
+				}
+			}
+		}
+		.information-phone-first {
+			display: none;
+		}
+		.starbase {
+			&__heading {
+				padding: 0rem 3rem;
+				top: 50%;
+				font-size: 4.5rem;
+				color: $white;
+			}
+			&__p {
+				padding: 0rem 3rem;
+				top: 59%;
+				width: 50%;
+			}
+			&__btn {
+				margin: 0rem 3rem;
+				padding: 1.8rem 4rem;
+				top: 73%;
+			}
+		}
+	}
+}
+@media (min-width: 1300px) {
+	.main {
+		.model {
+			height: 100vh;
+		}
+		.informations {
+			.information-first {
+				&__p {
+					width: 30%;
+				}
+				&__btn {
+					margin-top: 0rem;
+				}
+			}
+		}
+		.starbase {
+			&__heading {
+				padding: 0rem;
+			}
+			&__p {
+				padding: 0rem;
+
+				width: 40%;
+			}
+			&__btn {
+				margin: 0rem;
+			}
+		}
+	}
+	.footer-first {
+		&__btn {
+			padding: 2rem 4rem;
+		}
+		&__p {
+			padding: 0rem;
+			line-height: 0rem;
+		}
+	}
+	.footer-second {
+		padding: 0rem;
+		p {
+			width: 10%;
+		}
+		a {
+			margin: 2rem;
+			width: 80%;
+			align-items: start;
+			line-height: 0rem;
+		}
+	}
+}
